@@ -63,7 +63,7 @@ namespace SGPH.Controllers
         {
             var funcionario = new Funcionario();
 
-            return View(funcionario);
+            return View(new FuncionarioViewModel(funcionario));
         }
 
         //
@@ -80,7 +80,7 @@ namespace SGPH.Controllers
                 return RedirectToAction("Detalhes", new {id =  funcionario.Id});
             }
 
-            return View(funcionario);
+            return View(new FuncionarioViewModel(funcionario));
         }
 
         //
