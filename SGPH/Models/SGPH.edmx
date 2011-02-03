@@ -1,0 +1,962 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sgphdbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="sgphdbModelStoreContainer">
+          <EntitySet Name="areas" EntityType="sgphdbModel.Store.areas" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="cargos" EntityType="sgphdbModel.Store.cargos" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="cidades" EntityType="sgphdbModel.Store.cidades" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="cursosextensao" EntityType="sgphdbModel.Store.cursosextensao" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="escolaridades" EntityType="sgphdbModel.Store.escolaridades" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="estados" EntityType="sgphdbModel.Store.estados" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="experienciasprofissionais" EntityType="sgphdbModel.Store.experienciasprofissionais" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="formacoes" EntityType="sgphdbModel.Store.formacoes" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="funcionarios" EntityType="sgphdbModel.Store.funcionarios" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="funcionarios_idiomas" EntityType="sgphdbModel.Store.funcionarios_idiomas" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="idiomas" EntityType="sgphdbModel.Store.idiomas" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="perfis" EntityType="sgphdbModel.Store.perfis" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="setores" EntityType="sgphdbModel.Store.setores" store:Type="Tables" Schema="sgphdb" />
+          <EntitySet Name="unidades" EntityType="sgphdbModel.Store.unidades" store:Type="Tables" Schema="sgphdb" />
+          <AssociationSet Name="fk_Cidades_Estados" Association="sgphdbModel.Store.fk_Cidades_Estados">
+            <End Role="estados" EntitySet="estados" />
+            <End Role="cidades" EntitySet="cidades" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CursoExtensao_Funcionarios1" Association="sgphdbModel.Store.fk_CursoExtensao_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="cursosextensao" EntitySet="cursosextensao" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ExperienciasProfissionais_Funcionarios1" Association="sgphdbModel.Store.fk_ExperienciasProfissionais_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="experienciasprofissionais" EntitySet="experienciasprofissionais" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Formacoes_Areas1" Association="sgphdbModel.Store.fk_Formacoes_Areas1">
+            <End Role="areas" EntitySet="areas" />
+            <End Role="formacoes" EntitySet="formacoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Formacoes_Escolaridades1" Association="sgphdbModel.Store.fk_Formacoes_Escolaridades1">
+            <End Role="escolaridades" EntitySet="escolaridades" />
+            <End Role="formacoes" EntitySet="formacoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Formacoes_Funcionarios1" Association="sgphdbModel.Store.fk_Formacoes_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="formacoes" EntitySet="formacoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Cargos1" Association="sgphdbModel.Store.fk_Funcionarios_Cargos1">
+            <End Role="cargos" EntitySet="cargos" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Cidades1" Association="sgphdbModel.Store.fk_Funcionarios_Cidades1">
+            <End Role="cidades" EntitySet="cidades" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_has_Idiomas_Funcionarios1" Association="sgphdbModel.Store.fk_Funcionarios_has_Idiomas_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="funcionarios_idiomas" EntitySet="funcionarios_idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_has_Idiomas_Idiomas1" Association="sgphdbModel.Store.fk_Funcionarios_has_Idiomas_Idiomas1">
+            <End Role="idiomas" EntitySet="idiomas" />
+            <End Role="funcionarios_idiomas" EntitySet="funcionarios_idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Perfis1" Association="sgphdbModel.Store.fk_Funcionarios_Perfis1">
+            <End Role="perfis" EntitySet="perfis" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Setores1" Association="sgphdbModel.Store.fk_Funcionarios_Setores1">
+            <End Role="setores" EntitySet="setores" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Unidades1" Association="sgphdbModel.Store.fk_Funcionarios_Unidades1">
+            <End Role="unidades" EntitySet="unidades" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="cargos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="cidades">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Estados_Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Estados_Id" Type="uint" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="cursosextensao">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Funcionarios_Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CargaHoraria" Type="uint" Nullable="false" />
+          <Property Name="Instituicao" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DataInicio" Type="date" />
+          <Property Name="DataFim" Type="date" />
+          <Property Name="Funcionarios_Id" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="escolaridades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="estados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Sigla" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="experienciasprofissionais">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Funcionarios_Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Cargo" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="DataEntrada" Type="date" Nullable="false" />
+          <Property Name="DataSaida" Type="date" />
+          <Property Name="Funcionarios_Id" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="formacoes">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Escolaridades_Id" />
+            <PropertyRef Name="Areas_Id" />
+            <PropertyRef Name="Funcionarios_Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Curso" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Instituicao" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Escolaridades_Id" Type="uint" Nullable="false" />
+          <Property Name="Areas_Id" Type="uint" Nullable="false" />
+          <Property Name="Funcionarios_Id" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="funcionarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Matricula" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="DataNascimento" Type="date" />
+          <Property Name="Email" Type="varchar" MaxLength="45" />
+          <Property Name="Telefone" Type="varchar" MaxLength="45" />
+          <Property Name="Ramal" Type="varchar" MaxLength="45" />
+          <Property Name="Logradouro" Type="varchar" MaxLength="100" />
+          <Property Name="Numero" Type="varchar" MaxLength="10" />
+          <Property Name="Bairro" Type="varchar" MaxLength="45" />
+          <Property Name="Complemento" Type="varchar" MaxLength="45" />
+          <Property Name="Cep" Type="varchar" MaxLength="45" />
+          <Property Name="Cidades_Estados_Id" Type="uint" Nullable="false" />
+          <Property Name="Cidades_Id" Type="uint" Nullable="false" />
+          <Property Name="Unidades_Id" Type="uint" Nullable="false" />
+          <Property Name="Setores_Id" Type="uint" Nullable="false" />
+          <Property Name="Cargos_Id" Type="uint" Nullable="false" />
+          <Property Name="Perfis_Id" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="funcionarios_idiomas">
+          <Key>
+            <PropertyRef Name="Funcionarios_Id" />
+            <PropertyRef Name="Idiomas_Id" />
+          </Key>
+          <Property Name="Funcionarios_Id" Type="uint" Nullable="false" />
+          <Property Name="Idiomas_Id" Type="uint" Nullable="false" />
+          <Property Name="Leitura" Type="bool" />
+          <Property Name="Escrita" Type="bool" />
+          <Property Name="Conversacao" Type="bool" />
+        </EntityType>
+        <EntityType Name="idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="perfis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="setores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="unidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="fk_Cidades_Estados">
+          <End Role="estados" Type="sgphdbModel.Store.estados" Multiplicity="1" />
+          <End Role="cidades" Type="sgphdbModel.Store.cidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="cidades">
+              <PropertyRef Name="Estados_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CursoExtensao_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="1" />
+          <End Role="cursosextensao" Type="sgphdbModel.Store.cursosextensao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="cursosextensao">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ExperienciasProfissionais_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="1" />
+          <End Role="experienciasprofissionais" Type="sgphdbModel.Store.experienciasprofissionais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="experienciasprofissionais">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Formacoes_Areas1">
+          <End Role="areas" Type="sgphdbModel.Store.areas" Multiplicity="1" />
+          <End Role="formacoes" Type="sgphdbModel.Store.formacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="formacoes">
+              <PropertyRef Name="Areas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Formacoes_Escolaridades1">
+          <End Role="escolaridades" Type="sgphdbModel.Store.escolaridades" Multiplicity="1" />
+          <End Role="formacoes" Type="sgphdbModel.Store.formacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="escolaridades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="formacoes">
+              <PropertyRef Name="Escolaridades_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Formacoes_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="1" />
+          <End Role="formacoes" Type="sgphdbModel.Store.formacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="formacoes">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Cargos1">
+          <End Role="cargos" Type="sgphdbModel.Store.cargos" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cargos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Cargos_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Cidades1">
+          <End Role="cidades" Type="sgphdbModel.Store.cidades" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cidades">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Estados_Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Cidades_Id" />
+              <PropertyRef Name="Cidades_Estados_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_has_Idiomas_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="1" />
+          <End Role="funcionarios_idiomas" Type="sgphdbModel.Store.funcionarios_idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios_idiomas">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_has_Idiomas_Idiomas1">
+          <End Role="idiomas" Type="sgphdbModel.Store.idiomas" Multiplicity="1" />
+          <End Role="funcionarios_idiomas" Type="sgphdbModel.Store.funcionarios_idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idiomas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios_idiomas">
+              <PropertyRef Name="Idiomas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Perfis1">
+          <End Role="perfis" Type="sgphdbModel.Store.perfis" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfis">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Perfis_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Setores1">
+          <End Role="setores" Type="sgphdbModel.Store.setores" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="setores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Setores_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Unidades1">
+          <End Role="unidades" Type="sgphdbModel.Store.unidades" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Store.funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Unidades_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sgphdbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="sgphdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="areas" EntityType="sgphdbModel.Area" />
+          <EntitySet Name="cargos" EntityType="sgphdbModel.Cargo" />
+          <EntitySet Name="cidades" EntityType="sgphdbModel.Cidade" />
+          <EntitySet Name="cursosextensaos" EntityType="sgphdbModel.CursoExtensao" />
+          <EntitySet Name="escolaridades" EntityType="sgphdbModel.Escolaridade" />
+          <EntitySet Name="estados" EntityType="sgphdbModel.Estado" />
+          <EntitySet Name="experienciasprofissionais" EntityType="sgphdbModel.ExperienciaProfissional" />
+          <EntitySet Name="formacoes" EntityType="sgphdbModel.Formacao" />
+          <EntitySet Name="funcionarios" EntityType="sgphdbModel.Funcionario" />
+          <EntitySet Name="funcionarios_idiomas" EntityType="sgphdbModel.FuncionarioIdioma" />
+          <EntitySet Name="idiomas" EntityType="sgphdbModel.Idioma" />
+          <EntitySet Name="perfis" EntityType="sgphdbModel.Perfil" />
+          <EntitySet Name="setores" EntityType="sgphdbModel.Setor" />
+          <EntitySet Name="unidades" EntityType="sgphdbModel.Unidade" />
+          <AssociationSet Name="fk_Formacoes_Areas1" Association="sgphdbModel.fk_Formacoes_Areas1">
+            <End Role="areas" EntitySet="areas" />
+            <End Role="formacoes" EntitySet="formacoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Cargos1" Association="sgphdbModel.fk_Funcionarios_Cargos1">
+            <End Role="cargos" EntitySet="cargos" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Cidades_Estados" Association="sgphdbModel.fk_Cidades_Estados">
+            <End Role="estados" EntitySet="estados" />
+            <End Role="cidades" EntitySet="cidades" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Cidades1" Association="sgphdbModel.fk_Funcionarios_Cidades1">
+            <End Role="cidades" EntitySet="cidades" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CursoExtensao_Funcionarios1" Association="sgphdbModel.fk_CursoExtensao_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="cursosextensao" EntitySet="cursosextensaos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Formacoes_Escolaridades1" Association="sgphdbModel.fk_Formacoes_Escolaridades1">
+            <End Role="escolaridades" EntitySet="escolaridades" />
+            <End Role="formacoes" EntitySet="formacoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ExperienciasProfissionais_Funcionarios1" Association="sgphdbModel.fk_ExperienciasProfissionais_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="experienciasprofissionais" EntitySet="experienciasprofissionais" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Formacoes_Funcionarios1" Association="sgphdbModel.fk_Formacoes_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="formacoes" EntitySet="formacoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_has_Idiomas_Funcionarios1" Association="sgphdbModel.fk_Funcionarios_has_Idiomas_Funcionarios1">
+            <End Role="funcionarios" EntitySet="funcionarios" />
+            <End Role="funcionarios_idiomas" EntitySet="funcionarios_idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Perfis1" Association="sgphdbModel.fk_Funcionarios_Perfis1">
+            <End Role="perfis" EntitySet="perfis" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Setores1" Association="sgphdbModel.fk_Funcionarios_Setores1">
+            <End Role="setores" EntitySet="setores" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_Unidades1" Association="sgphdbModel.fk_Funcionarios_Unidades1">
+            <End Role="unidades" EntitySet="unidades" />
+            <End Role="funcionarios" EntitySet="funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Funcionarios_has_Idiomas_Idiomas1" Association="sgphdbModel.fk_Funcionarios_has_Idiomas_Idiomas1">
+            <End Role="idiomas" EntitySet="idiomas" />
+            <End Role="funcionarios_idiomas" EntitySet="funcionarios_idiomas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="formacoes" Relationship="sgphdbModel.fk_Formacoes_Areas1" FromRole="areas" ToRole="formacoes" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="funcionarios" Relationship="sgphdbModel.fk_Funcionarios_Cargos1" FromRole="cargos" ToRole="funcionarios" />
+        </EntityType>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Estados_Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estados_Id" Type="Int64" Nullable="false" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="estado" Relationship="sgphdbModel.fk_Cidades_Estados" FromRole="cidades" ToRole="estados" />
+          <NavigationProperty Name="funcionarios" Relationship="sgphdbModel.fk_Funcionarios_Cidades1" FromRole="cidades" ToRole="funcionarios" />
+        </EntityType>
+        <EntityType Name="CursoExtensao">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Funcionarios_Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <Property Name="CargaHoraria" Type="Int64" Nullable="false" />
+          <Property Name="Instituicao" Type="String" Nullable="false" />
+          <Property Name="DataInicio" Type="DateTime" />
+          <Property Name="DataFim" Type="DateTime" />
+          <Property Name="Funcionarios_Id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="funcionario" Relationship="sgphdbModel.fk_CursoExtensao_Funcionarios1" FromRole="cursosextensao" ToRole="funcionarios" />
+        </EntityType>
+        <EntityType Name="Escolaridade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="formacoes" Relationship="sgphdbModel.fk_Formacoes_Escolaridades1" FromRole="escolaridades" ToRole="formacoes" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <Property Name="Sigla" Type="String" Nullable="false" />
+          <NavigationProperty Name="cidades" Relationship="sgphdbModel.fk_Cidades_Estados" FromRole="estados" ToRole="cidades" />
+        </EntityType>
+        <EntityType Name="ExperienciaProfissional">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Funcionarios_Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa" Type="String" Nullable="false" />
+          <Property Name="Cargo" Type="String" Nullable="false" />
+          <Property Name="DataEntrada" Type="DateTime" Nullable="false" />
+          <Property Name="DataSaida" Type="DateTime" />
+          <Property Name="Funcionarios_Id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="funcionario" Relationship="sgphdbModel.fk_ExperienciasProfissionais_Funcionarios1" FromRole="experienciasprofissionais" ToRole="funcionarios" />
+        </EntityType>
+        <EntityType Name="Formacao">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Escolaridades_Id" />
+            <PropertyRef Name="Areas_Id" />
+            <PropertyRef Name="Funcionarios_Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Curso" Type="String" Nullable="false" />
+          <Property Name="Instituicao" Type="String" Nullable="false" />
+          <Property Name="Escolaridades_Id" Type="Int64" Nullable="false" />
+          <Property Name="Areas_Id" Type="Int64" Nullable="false" />
+          <Property Name="Funcionarios_Id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="area" Relationship="sgphdbModel.fk_Formacoes_Areas1" FromRole="formacoes" ToRole="areas" />
+          <NavigationProperty Name="escolaridade" Relationship="sgphdbModel.fk_Formacoes_Escolaridades1" FromRole="formacoes" ToRole="escolaridades" />
+          <NavigationProperty Name="funcionario" Relationship="sgphdbModel.fk_Formacoes_Funcionarios1" FromRole="formacoes" ToRole="funcionarios" />
+        </EntityType>
+        <EntityType Name="Funcionario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="Matricula" Type="String" Nullable="false" />
+          <Property Name="DataNascimento" Type="DateTime" />
+          <Property Name="Email" Type="String" />
+          <Property Name="Telefone" Type="String" />
+          <Property Name="Ramal" Type="String" />
+          <Property Name="Logradouro" Type="String" />
+          <Property Name="Numero" Type="String" />
+          <Property Name="Bairro" Type="String" />
+          <Property Name="Complemento" Type="String" />
+          <Property Name="Cep" Type="String" />
+          <Property Name="Cidades_Estados_Id" Type="Int64" Nullable="false" />
+          <Property Name="Cidades_Id" Type="Int64" Nullable="false" />
+          <Property Name="Unidades_Id" Type="Int64" Nullable="false" />
+          <Property Name="Setores_Id" Type="Int64" Nullable="false" />
+          <Property Name="Cargos_Id" Type="Int64" Nullable="false" />
+          <Property Name="Perfis_Id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="cargo" Relationship="sgphdbModel.fk_Funcionarios_Cargos1" FromRole="funcionarios" ToRole="cargos" />
+          <NavigationProperty Name="cidade" Relationship="sgphdbModel.fk_Funcionarios_Cidades1" FromRole="funcionarios" ToRole="cidades" />
+          <NavigationProperty Name="cursosextensaos" Relationship="sgphdbModel.fk_CursoExtensao_Funcionarios1" FromRole="funcionarios" ToRole="cursosextensao" />
+          <NavigationProperty Name="experienciasprofissionais" Relationship="sgphdbModel.fk_ExperienciasProfissionais_Funcionarios1" FromRole="funcionarios" ToRole="experienciasprofissionais" />
+          <NavigationProperty Name="formacoes" Relationship="sgphdbModel.fk_Formacoes_Funcionarios1" FromRole="funcionarios" ToRole="formacoes" />
+          <NavigationProperty Name="funcionarios_idiomas" Relationship="sgphdbModel.fk_Funcionarios_has_Idiomas_Funcionarios1" FromRole="funcionarios" ToRole="funcionarios_idiomas" />
+          <NavigationProperty Name="perfi" Relationship="sgphdbModel.fk_Funcionarios_Perfis1" FromRole="funcionarios" ToRole="perfis" />
+          <NavigationProperty Name="setore" Relationship="sgphdbModel.fk_Funcionarios_Setores1" FromRole="funcionarios" ToRole="setores" />
+          <NavigationProperty Name="unidade" Relationship="sgphdbModel.fk_Funcionarios_Unidades1" FromRole="funcionarios" ToRole="unidades" />
+        </EntityType>
+        <EntityType Name="FuncionarioIdioma">
+          <Key>
+            <PropertyRef Name="Funcionarios_Id" />
+            <PropertyRef Name="Idiomas_Id" />
+          </Key>
+          <Property Name="Funcionarios_Id" Type="Int64" Nullable="false" />
+          <Property Name="Idiomas_Id" Type="Int64" Nullable="false" />
+          <Property Name="Leitura" Type="Boolean" />
+          <Property Name="Escrita" Type="Boolean" />
+          <Property Name="Conversacao" Type="Boolean" />
+          <NavigationProperty Name="funcionario" Relationship="sgphdbModel.fk_Funcionarios_has_Idiomas_Funcionarios1" FromRole="funcionarios_idiomas" ToRole="funcionarios" />
+          <NavigationProperty Name="idioma" Relationship="sgphdbModel.fk_Funcionarios_has_Idiomas_Idiomas1" FromRole="funcionarios_idiomas" ToRole="idiomas" />
+        </EntityType>
+        <EntityType Name="Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="funcionarios_idiomas" Relationship="sgphdbModel.fk_Funcionarios_has_Idiomas_Idiomas1" FromRole="idiomas" ToRole="funcionarios_idiomas" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="funcionarios" Relationship="sgphdbModel.fk_Funcionarios_Perfis1" FromRole="perfis" ToRole="funcionarios" />
+        </EntityType>
+        <EntityType Name="Setor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="funcionarios" Relationship="sgphdbModel.fk_Funcionarios_Setores1" FromRole="setores" ToRole="funcionarios" />
+        </EntityType>
+        <EntityType Name="Unidade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
+          <NavigationProperty Name="funcionarios" Relationship="sgphdbModel.fk_Funcionarios_Unidades1" FromRole="unidades" ToRole="funcionarios" />
+        </EntityType>
+        <Association Name="fk_Formacoes_Areas1">
+          <End Role="areas" Type="sgphdbModel.Area" Multiplicity="1" />
+          <End Role="formacoes" Type="sgphdbModel.Formacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="formacoes">
+              <PropertyRef Name="Areas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Cargos1">
+          <End Role="cargos" Type="sgphdbModel.Cargo" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cargos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Cargos_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Cidades_Estados">
+          <End Role="estados" Type="sgphdbModel.Estado" Multiplicity="1" />
+          <End Role="cidades" Type="sgphdbModel.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="cidades">
+              <PropertyRef Name="Estados_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Cidades1">
+          <End Role="cidades" Type="sgphdbModel.Cidade" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cidades">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Estados_Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Cidades_Id" />
+              <PropertyRef Name="Cidades_Estados_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CursoExtensao_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="1" />
+          <End Role="cursosextensao" Type="sgphdbModel.CursoExtensao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="cursosextensao">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Formacoes_Escolaridades1">
+          <End Role="escolaridades" Type="sgphdbModel.Escolaridade" Multiplicity="1" />
+          <End Role="formacoes" Type="sgphdbModel.Formacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="escolaridades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="formacoes">
+              <PropertyRef Name="Escolaridades_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ExperienciasProfissionais_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="1" />
+          <End Role="experienciasprofissionais" Type="sgphdbModel.ExperienciaProfissional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="experienciasprofissionais">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Formacoes_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="1" />
+          <End Role="formacoes" Type="sgphdbModel.Formacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="formacoes">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_has_Idiomas_Funcionarios1">
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="1" />
+          <End Role="funcionarios_idiomas" Type="sgphdbModel.FuncionarioIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="funcionarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios_idiomas">
+              <PropertyRef Name="Funcionarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Perfis1">
+          <End Role="perfis" Type="sgphdbModel.Perfil" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfis">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Perfis_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Setores1">
+          <End Role="setores" Type="sgphdbModel.Setor" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="setores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Setores_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_Unidades1">
+          <End Role="unidades" Type="sgphdbModel.Unidade" Multiplicity="1" />
+          <End Role="funcionarios" Type="sgphdbModel.Funcionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios">
+              <PropertyRef Name="Unidades_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Funcionarios_has_Idiomas_Idiomas1">
+          <End Role="idiomas" Type="sgphdbModel.Idioma" Multiplicity="1" />
+          <End Role="funcionarios_idiomas" Type="sgphdbModel.FuncionarioIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idiomas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="funcionarios_idiomas">
+              <PropertyRef Name="Idiomas_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sgphdbModelStoreContainer" CdmEntityContainer="sgphdbEntities">
+          <EntitySetMapping Name="areas"><EntityTypeMapping TypeName="sgphdbModel.Area"><MappingFragment StoreEntitySet="areas">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="cargos"><EntityTypeMapping TypeName="sgphdbModel.Cargo"><MappingFragment StoreEntitySet="cargos">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="cidades"><EntityTypeMapping TypeName="sgphdbModel.Cidade"><MappingFragment StoreEntitySet="cidades">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Estados_Id" ColumnName="Estados_Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="cursosextensaos"><EntityTypeMapping TypeName="sgphdbModel.CursoExtensao"><MappingFragment StoreEntitySet="cursosextensao">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+            <ScalarProperty Name="CargaHoraria" ColumnName="CargaHoraria" />
+            <ScalarProperty Name="Instituicao" ColumnName="Instituicao" />
+            <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+            <ScalarProperty Name="DataFim" ColumnName="DataFim" />
+            <ScalarProperty Name="Funcionarios_Id" ColumnName="Funcionarios_Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="escolaridades"><EntityTypeMapping TypeName="sgphdbModel.Escolaridade"><MappingFragment StoreEntitySet="escolaridades">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="estados"><EntityTypeMapping TypeName="sgphdbModel.Estado"><MappingFragment StoreEntitySet="estados">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+            <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="experienciasprofissionais"><EntityTypeMapping TypeName="sgphdbModel.ExperienciaProfissional"><MappingFragment StoreEntitySet="experienciasprofissionais">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+            <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+            <ScalarProperty Name="DataEntrada" ColumnName="DataEntrada" />
+            <ScalarProperty Name="DataSaida" ColumnName="DataSaida" />
+            <ScalarProperty Name="Funcionarios_Id" ColumnName="Funcionarios_Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="formacoes"><EntityTypeMapping TypeName="sgphdbModel.Formacao"><MappingFragment StoreEntitySet="formacoes">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Curso" ColumnName="Curso" />
+            <ScalarProperty Name="Instituicao" ColumnName="Instituicao" />
+            <ScalarProperty Name="Escolaridades_Id" ColumnName="Escolaridades_Id" />
+            <ScalarProperty Name="Areas_Id" ColumnName="Areas_Id" />
+            <ScalarProperty Name="Funcionarios_Id" ColumnName="Funcionarios_Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="funcionarios"><EntityTypeMapping TypeName="sgphdbModel.Funcionario"><MappingFragment StoreEntitySet="funcionarios">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Nome" ColumnName="Nome" />
+            <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+            <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+            <ScalarProperty Name="Ramal" ColumnName="Ramal" />
+            <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+            <ScalarProperty Name="Numero" ColumnName="Numero" />
+            <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+            <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+            <ScalarProperty Name="Cep" ColumnName="Cep" />
+            <ScalarProperty Name="Cidades_Estados_Id" ColumnName="Cidades_Estados_Id" />
+            <ScalarProperty Name="Cidades_Id" ColumnName="Cidades_Id" />
+            <ScalarProperty Name="Unidades_Id" ColumnName="Unidades_Id" />
+            <ScalarProperty Name="Setores_Id" ColumnName="Setores_Id" />
+            <ScalarProperty Name="Cargos_Id" ColumnName="Cargos_Id" />
+            <ScalarProperty Name="Perfis_Id" ColumnName="Perfis_Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="funcionarios_idiomas"><EntityTypeMapping TypeName="sgphdbModel.FuncionarioIdioma"><MappingFragment StoreEntitySet="funcionarios_idiomas">
+            <ScalarProperty Name="Funcionarios_Id" ColumnName="Funcionarios_Id" />
+            <ScalarProperty Name="Idiomas_Id" ColumnName="Idiomas_Id" />
+            <ScalarProperty Name="Leitura" ColumnName="Leitura" />
+            <ScalarProperty Name="Escrita" ColumnName="Escrita" />
+            <ScalarProperty Name="Conversacao" ColumnName="Conversacao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="idiomas"><EntityTypeMapping TypeName="sgphdbModel.Idioma"><MappingFragment StoreEntitySet="idiomas">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="perfis"><EntityTypeMapping TypeName="sgphdbModel.Perfil"><MappingFragment StoreEntitySet="perfis">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="setores"><EntityTypeMapping TypeName="sgphdbModel.Setor"><MappingFragment StoreEntitySet="setores">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="unidades"><EntityTypeMapping TypeName="sgphdbModel.Unidade"><MappingFragment StoreEntitySet="unidades">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="SGPH">
+        <EntityTypeShape EntityType="sgphdbModel.Area" Width="1.5" PointX="8.25" PointY="11.625" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Cargo" Width="1.5" PointX="3" PointY="3.25" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Cidade" Width="1.5" PointX="3" PointY="6.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.CursoExtensao" Width="1.5" PointX="7.5" PointY="4.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Escolaridade" Width="1.5" PointX="8.25" PointY="14" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Estado" Width="1.5" PointX="0.75" PointY="6.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.ExperienciaProfissional" Width="1.5" PointX="7.5" PointY="8" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Formacao" Width="1.5" PointX="10.5" PointY="6.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Funcionario" Width="1.5" PointX="5.25" PointY="4.5" Height="6.2109179687500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.FuncionarioIdioma" Width="1.5" PointX="10.5" PointY="2.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Idioma" Width="1.5" PointX="8.25" PointY="1.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Perfil" Width="1.5" PointX="3" PointY="9.625" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Setor" Width="1.5" PointX="3" PointY="12" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgphdbModel.Unidade" Width="1.5" PointX="3" PointY="14.25" Height="1.5956835937500031" IsExpanded="true" />
+        <AssociationConnector Association="sgphdbModel.fk_Formacoes_Areas1" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.40625" PointY="11.625" />
+          <ConnectorPoint PointX="9.40625" PointY="7.6535953776041659" />
+          <ConnectorPoint PointX="10.5" PointY="7.6535953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Funcionarios_Cargos1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.672841796875" />
+          <ConnectorPoint PointX="5.25" PointY="4.672841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Cidades_Estados" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.6439925130208337" />
+          <ConnectorPoint PointX="3" PointY="7.6439925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Funcionarios_Cidades1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.6151432291666659" />
+          <ConnectorPoint PointX="5.25" PointY="7.6151432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_CursoExtensao_Funcionarios1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="6.0285953776041659" />
+          <ConnectorPoint PointX="7.5" PointY="6.0285953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Formacoes_Escolaridades1" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="14.797841796875" />
+          <ConnectorPoint PointX="11.25" PointY="14.797841796875" />
+          <ConnectorPoint PointX="11.25" PointY="8.9994921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_ExperienciasProfissionais_Funcionarios1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="9.1824446614583337" />
+          <ConnectorPoint PointX="7.5" PointY="9.1824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Formacoes_Funcionarios1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="7.4491430664062488" />
+          <ConnectorPoint PointX="10.5" PointY="7.4491430664062488" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Funcionarios_has_Idiomas_Funcionarios1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="4.5" />
+          <ConnectorPoint PointX="6" PointY="3.9540912968750015" />
+          <ConnectorPoint PointX="10.5" PointY="3.9540912968750015" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Funcionarios_Perfis1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.167958984375002" />
+          <ConnectorPoint PointX="5.25" PointY="10.167958984375002" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Funcionarios_Setores1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.797841796875002" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="12.797841796875002" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="12.797841796875002" />
+          <ConnectorPoint PointX="6" PointY="12.797841796875002" />
+          <ConnectorPoint PointX="6" PointY="10.710917968750003" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Funcionarios_Unidades1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="15.047841796875002" />
+          <ConnectorPoint PointX="5.5937475" PointY="15.047841796875002" />
+          <ConnectorPoint PointX="5.5937475" PointY="10.710917968750003" />
+        </AssociationConnector>
+        <AssociationConnector Association="sgphdbModel.fk_Funcionarios_has_Idiomas_Idiomas1" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="2.8603417968750016" />
+          <ConnectorPoint PointX="10.5" PointY="2.8603417968750016" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

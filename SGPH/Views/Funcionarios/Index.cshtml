@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SGPH.Models.Funcionario>
+
+@{
+    ViewBag.Title = "Listagem de Funcionarios";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Inserir novo", "Criar")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Matricula
+        </th>
+        <th>
+            DataNascimento
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Telefone
+        </th>
+        <th>
+            Ramal
+        </th>
+    </tr>
+
+@foreach (var funcionario in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=funcionario.Id }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=funcionario.Id }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id=funcionario.Id })
+        </td>
+        <td>
+            @funcionario.Nome
+        </td>
+        <td>
+            @funcionario.Matricula
+        </td>
+        <td>
+            @String.Format("{0:d}", funcionario.DataNascimento)
+        </td>
+        <td>
+            @funcionario.Email
+        </td>
+        <td>
+            @funcionario.Telefone
+        </td>
+        <td>
+            @funcionario.Ramal
+        </td>
+    </tr>
+}
+
+</table>
+

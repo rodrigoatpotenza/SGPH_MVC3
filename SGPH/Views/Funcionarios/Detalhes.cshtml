@@ -1,0 +1,67 @@
+﻿@model SGPH.Models.Funcionario
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<fieldset>
+    <legend>Funcionario</legend>
+
+    <div class="display-label">Nome</div>
+    <div class="display-field">@Model.Nome</div>
+
+    <div class="display-label">Matricula</div>
+    <div class="display-field">@Model.Matricula</div>
+
+    <div class="display-label">DataNascimento</div>
+    <div class="display-field">@String.Format("{0:g}", Model.DataNascimento)</div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">@Model.Email</div>
+
+    <div class="display-label">Telefone</div>
+    <div class="display-field">@Model.Telefone</div>
+
+    <div class="display-label">Ramal</div>
+    <div class="display-field">@Model.Ramal</div>
+
+    <div class="display-label">Logradouro</div>
+    <div class="display-field">@Model.Logradouro</div>
+
+    <div class="display-label">Numero</div>
+    <div class="display-field">@Model.Numero</div>
+
+    <div class="display-label">Bairro</div>
+    <div class="display-field">@Model.Bairro</div>
+
+    <div class="display-label">Complemento</div>
+    <div class="display-field">@Model.Complemento</div>
+
+    <div class="display-label">Cep</div>
+    <div class="display-field">@Model.Cep</div>
+
+    <div class="display-label">Cidades_Estados_Id</div>
+    <div class="display-field">@Model.Cidades_Estados_Id</div>
+
+    <div class="display-label">Cidades_Id</div>
+    <div class="display-field">@Model.Cidades_Id</div>
+
+    <div class="display-label">Unidades_Id</div>
+    <div class="display-field">@Model.Unidades_Id</div>
+
+    <div class="display-label">Setores_Id</div>
+    <div class="display-field">@Model.Setores_Id</div>
+
+    <div class="display-label">Cargos_Id</div>
+    <div class="display-field">@Model.Cargos_Id</div>
+
+    <div class="display-label">Perfis_Id</div>
+    <div class="display-field">@Model.Perfis_Id</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id=Model.Id }) |
+    @Html.ActionLink("Voltar para Listagem", "Index")
+</p>
+

@@ -1,0 +1,21 @@
+﻿@model SGPH.Models.Funcionario
+
+@{
+    ViewBag.Title = "Excluir Funcionario";
+}
+
+<h2>Confirmacao de exclusao de Funcionario</h2>
+
+<div>
+    <p>Por favor confirme a exclusao do Funcionario abaixo:
+    <em>@Model.Nome ?</em></p>
+</div>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input name="confirmButton" type="submit" value="Excluir" /> |
+        @Html.ActionLink("Voltar para Listagem", "Index")
+    </p>
+}
+
+
