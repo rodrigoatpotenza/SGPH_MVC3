@@ -8,7 +8,17 @@ namespace SGPH.Controllers
 {
     public class FuncionariosController : Controller
     {
-        private readonly FuncionarioRepository _funcionarioRepository = new FuncionarioRepository();
+        private readonly IFuncionarioRepository _funcionarioRepository;
+
+        public FuncionariosController()
+            : this(new FuncionarioRepository()){}
+
+        public FuncionariosController(IFuncionarioRepository repository)
+        {
+            _funcionarioRepository = repository;
+        }
+
+
         //
         // GET: /Funcionarios/
         //      /Funcionarios/Pagina/2

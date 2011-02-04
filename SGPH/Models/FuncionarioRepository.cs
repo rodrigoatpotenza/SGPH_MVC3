@@ -2,7 +2,7 @@
 
 namespace SGPH.Models
 {
-    public class FuncionarioRepository
+    public class FuncionarioRepository : IFuncionarioRepository
     {
         private readonly sgphdbEntities _entities = new sgphdbEntities();
 

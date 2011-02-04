@@ -69,6 +69,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\FuncionarioRepository.cs" />
+    <Compile Include="Models\IFuncionarioRepository.cs" />
     <Compile Include="Models\SGPH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +82,8 @@
   <ItemGroup>
     <Content Include="Content\themes\base\images\loading.gif" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

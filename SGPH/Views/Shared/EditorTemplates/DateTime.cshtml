@@ -1,0 +1,9 @@
+﻿@model System.DateTime
+
+@Html.TextBox("",ViewData.TemplateInfo.FormattedModelValue,new {@class = "text-box single-line"})
+
+<script type="text/javascript">
+    $(function () {
+        $('#@ViewData.TemplateInfo.GetFullHtmlFieldId("")').datepicker();
+    });
+</script>
