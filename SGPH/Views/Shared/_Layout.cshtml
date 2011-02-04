@@ -3,7 +3,32 @@
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4-vsdoc.js")" type="text/javascript"></script>
+    
+
+    <script type="text/javascript">
+        $(function () {
+            $("#Funcionario_Cidades_Estados_Id").change(function () {
+                $("#loading").empty().html('<img src="../../Content/themes/base/images/loading.gif" />');
+                var val = $(this).val();
+                $cidades = $("#Funcionario_Cidades_Id").html('<option value="">--- Selecione ---</option>');
+
+                $.ajax({
+                    url: '@Url.Action("Cidades")',
+                    datatype: 'json',
+                    data: { estadoId: val },
+                    success: function (cidades) {
+                        $.each(cidades, function (i, cidade) {
+                            $("#loading").empty().html();
+                            $cidades.append('<option value="' + cidade.Value + '">' + cidade.Text + '</option>');
+                        });
+                    }
+                })
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -11,7 +36,7 @@
 
         <div id="header">
             <div id="title">
-                <h1>My MVC Application</h1>
+                <h1>SGPH - Sistema de Gerenciamento de Potencial Humano</h1>
             </div>
 
             <div id="logindisplay">
@@ -21,7 +46,7 @@
             <div id="menucontainer">
 
                 <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Funcionários", "Index", "Funcionarios")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
 
@@ -31,6 +56,8 @@
         <div id="main">
             @RenderBody()
             <div id="footer">
+                &copy;SEPLAN - Secretaria de Planejamento do Estado da Bahia - Telefones: (71) 3115-3482 
+                / 3115-3448. Av. Luis Viana Filho, 2a Avenida N 250 - CEP 41.745-003, CAB, Salvador/Bahia.
             </div>
         </div>
     </div>

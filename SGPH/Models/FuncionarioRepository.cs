@@ -8,7 +8,7 @@ namespace SGPH.Models
 
         public IQueryable<Funcionario> EncontreTodosOsFuncionarios()
         {
-            return _entities.funcionarios;
+            return _entities.funcionarios.OrderBy(f => f.Nome);
         }
 
         public Funcionario TragaUmFuncionario(int id)

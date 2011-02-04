@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SGPH.Models.Funcionario>
+﻿@model SGPH.Helpers.ListaPaginada<SGPH.Models.Funcionario>
 
 @{
     ViewBag.Title = "Listagem de Funcionarios";
@@ -59,6 +59,14 @@
         </td>
     </tr>
 }
-
 </table>
+@if (Model.TemPaginaAnterior)
+{ 
+    @Html.RouteLink("<<   ", "ListagemFuncionarios", new { pagina = ( Model.IndiceDaPagina-1 )})
+}
 
+<span> | </span>
+@if (Model.TemPaginaPosterior) 
+{
+    @Html.RouteLink("  >>", "ListagemFuncionarios", new { pagina = (Model.IndiceDaPagina+1)}) 
+}

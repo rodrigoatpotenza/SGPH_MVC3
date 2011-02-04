@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
+using SGPH.Helpers;
 using SGPH.Models;
 using SGPH.Models.ViewModels;
 
@@ -11,13 +11,18 @@ namespace SGPH.Controllers
         private readonly FuncionarioRepository _funcionarioRepository = new FuncionarioRepository();
         //
         // GET: /Funcionarios/
+        //      /Funcionarios/Pagina/2
 
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 0)
         {
-            var funcionarios = _funcionarioRepository.EncontreTodosOsFuncionarios().ToList();
+            const int tamanhoDaPagina = 10;
 
-            return View("Index", funcionarios);
+            var funcionarios = _funcionarioRepository.EncontreTodosOsFuncionarios();
+            var paginacaoFuncionarios = new ListaPaginada<Funcionario>(funcionarios, pagina, tamanhoDaPagina);  
+
+            return View(paginacaoFuncionarios);
         }
+
 
         public ActionResult Detalhes(int id)
         {
@@ -69,7 +74,7 @@ namespace SGPH.Controllers
         //
         // POST: /Funcionarios/Criar
 
-        [HttpPost]
+        [HttpPost,Authorize]
         public ActionResult Criar(Funcionario funcionario)
         {
             if(ModelState.IsValid)
@@ -109,5 +114,16 @@ namespace SGPH.Controllers
 
             return View("Excluido");
         }
+
+        public ActionResult Cidades(long? estadoId, Funcionario funcionario)
+        {
+            if(estadoId.HasValue)
+                funcionario.Cidades_Estados_Id = estadoId.Value;
+
+            var cidades = new SelectList(new FuncionarioViewModel(funcionario).Cidades, "Value", "Text");
+
+            return Json(cidades,JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

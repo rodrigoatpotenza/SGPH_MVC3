@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace SGPH
@@ -22,9 +18,15 @@ namespace SGPH
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "ListagemFuncionarios",
+                "Funcionarios/Pagina/{pagina}",
+                new {controller = "Funcionarios",action="Index"}
+                );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Funcionarios", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

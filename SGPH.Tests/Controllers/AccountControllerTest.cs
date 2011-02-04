@@ -284,8 +284,8 @@ namespace SGPH.Tests.Controllers
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
-            RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
-            Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
+            var redirectResult = (RedirectToRouteResult)result;
+            Assert.AreEqual("Funcionarios", redirectResult.RouteValues["controller"]);
             Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
         }
 
@@ -293,8 +293,8 @@ namespace SGPH.Tests.Controllers
         public void Register_Post_ReturnsViewIfRegistrationFails()
         {
             // Arrange
-            AccountController controller = GetAccountController();
-            RegisterModel model = new RegisterModel()
+            var controller = GetAccountController();
+            var model = new RegisterModel()
             {
                 UserName = "duplicateUser",
                 Email = "goodEmail",
