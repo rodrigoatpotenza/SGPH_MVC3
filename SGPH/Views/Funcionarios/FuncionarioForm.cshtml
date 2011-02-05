@@ -119,7 +119,7 @@
             @Html.LabelFor(model => model.Funcionario.Unidades_Id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Funcionario.Unidades_Id)
+            @Html.DropDownListFor(model => model.Funcionario.Unidades_Id, Model.Unidades, "--- Selecione ---")
             @Html.ValidationMessageFor(model => model.Funcionario.Unidades_Id,"*")
         </div>
 
@@ -127,7 +127,7 @@
             @Html.LabelFor(model => model.Funcionario.Setores_Id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Funcionario.Setores_Id)
+            @Html.DropDownListFor(model => model.Funcionario.Setores_Id, Model.Setores, "--- Selecione ---")
             @Html.ValidationMessageFor(model => model.Funcionario.Setores_Id,"*")
         </div>
 
@@ -135,7 +135,7 @@
             @Html.LabelFor(model => model.Funcionario.Cargos_Id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Funcionario.Cargos_Id)
+            @Html.DropDownListFor(model => model.Funcionario.Cargos_Id, Model.Cargos, "--- Selecione ---")
             @Html.ValidationMessageFor(model => model.Funcionario.Cargos_Id,"*")
         </div>
 
@@ -143,7 +143,7 @@
             @Html.LabelFor(model => model.Funcionario.Perfis_Id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Funcionario.Perfis_Id)
+            @Html.DropDownListFor(model => model.Funcionario.Perfis_Id, Model.Perfis, "--- Selecione ---")
             @Html.ValidationMessageFor(model => model.Funcionario.Perfis_Id,"*")
         </div>
 

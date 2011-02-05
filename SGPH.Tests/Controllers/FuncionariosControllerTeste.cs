@@ -51,8 +51,8 @@ namespace SGPH.Tests.Controllers
 
         FuncionariosController CriarFuncionariosController()
         {
-            var repository = new FalsoRepositorio.FalsoFuncionarioRepository(CriarFuncionariosTeste());
-            return new FuncionariosController(repository);
+            //var repository = new FalsoRepositorio.FalsoFuncionarioRepository(CriarFuncionariosTeste());
+            return new FuncionariosController();
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using Ninject;
 using SGPH.Helpers;
 using SGPH.Models;
 using SGPH.Models.ViewModels;
@@ -8,16 +9,8 @@ namespace SGPH.Controllers
 {
     public class FuncionariosController : Controller
     {
-        private readonly IFuncionarioRepository _funcionarioRepository;
-
-        public FuncionariosController()
-            : this(new FuncionarioRepository()){}
-
-        public FuncionariosController(IFuncionarioRepository repository)
-        {
-            _funcionarioRepository = repository;
-        }
-
+        [Inject]
+        public IFuncionarioRepository FuncionarioRepository { get; set; }
 
         //
         // GET: /Funcionarios/
@@ -27,7 +20,7 @@ namespace SGPH.Controllers
         {
             const int tamanhoDaPagina = 10;
 
-            var funcionarios = _funcionarioRepository.EncontreTodosOsFuncionarios();
+            var funcionarios = FuncionarioRepository.EncontreTodosOsFuncionarios();
             var paginacaoFuncionarios = new ListaPaginada<Funcionario>(funcionarios, pagina, tamanhoDaPagina);  
 
             return View(paginacaoFuncionarios);
@@ -36,7 +29,7 @@ namespace SGPH.Controllers
 
         public ActionResult Detalhes(int id)
         {
-            var funcionario = _funcionarioRepository.TragaUmFuncionario(id);
+            var funcionario = FuncionarioRepository.TragaUmFuncionario(id);
 
             return funcionario == null ? View("NaoEncontrado") : View("Detalhes", funcionario);
         }
@@ -47,7 +40,7 @@ namespace SGPH.Controllers
         [Authorize]
         public ActionResult Editar(int id)
         {
-            var funcionario = _funcionarioRepository.TragaUmFuncionario(id);
+            var funcionario = FuncionarioRepository.TragaUmFuncionario(id);
 
             return View(new FuncionarioViewModel(funcionario));
         }
@@ -58,13 +51,13 @@ namespace SGPH.Controllers
         [HttpPost]
         public ActionResult Editar(int id, FormCollection form)
         {
-            var funcionario = _funcionarioRepository.TragaUmFuncionario(id);
+            var funcionario = FuncionarioRepository.TragaUmFuncionario(id);
             funcionario.Cidades_Estados_Id = Convert.ToInt64(form["Funcionario.Cidades_Estados_Id"]);
             funcionario.Cidades_Id = Convert.ToInt64(form["Funcionario.Cidades_Id"]);
 
             if(TryUpdateModel(funcionario))
             {
-                _funcionarioRepository.PersistirNoBanco();
+                FuncionarioRepository.PersistirNoBanco();
                 return RedirectToAction("Detalhes", new {id = funcionario.Id});
             }
 
@@ -76,7 +69,10 @@ namespace SGPH.Controllers
 
         public ActionResult Criar()
         {
-            var funcionario = new Funcionario();
+            var funcionario = new Funcionario
+                                  {
+                                      DataNascimento = new DateTime()
+                                  };
 
             return View(new FuncionarioViewModel(funcionario));
         }
@@ -89,8 +85,8 @@ namespace SGPH.Controllers
         {
             if(ModelState.IsValid)
             {
-                _funcionarioRepository.Inserir(funcionario);
-                _funcionarioRepository.PersistirNoBanco();
+                FuncionarioRepository.Inserir(funcionario);
+                FuncionarioRepository.PersistirNoBanco();
 
                 return RedirectToAction("Detalhes", new {id =  funcionario.Id});
             }
@@ -103,7 +99,7 @@ namespace SGPH.Controllers
 
         public ActionResult Excluir(int id)
         {
-            var funcionario = _funcionarioRepository.TragaUmFuncionario(id);
+            var funcionario = FuncionarioRepository.TragaUmFuncionario(id);
 
             return funcionario == null ? View("NaoEncontrado") : View(funcionario);
         }
@@ -114,13 +110,13 @@ namespace SGPH.Controllers
         [HttpPost]
         public ActionResult Excluir(int id, string confirmButton)
         {
-            var funcionario = _funcionarioRepository.TragaUmFuncionario(id);
+            var funcionario = FuncionarioRepository.TragaUmFuncionario(id);
 
             if (funcionario == null)
                 return View("NaoEncontrado");
 
-            _funcionarioRepository.Excluir(funcionario);
-            _funcionarioRepository.PersistirNoBanco();
+            FuncionarioRepository.Excluir(funcionario);
+            FuncionarioRepository.PersistirNoBanco();
 
             return View("Excluido");
         }
