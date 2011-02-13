@@ -13,6 +13,7 @@ namespace SGPH.Models
 
         [Required(ErrorMessage="Data de Nascimento é obrigatório.")]
         [Display(Name="Data de Nascimento")]
+        [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage="Cidade é campo obrigatório.")]
