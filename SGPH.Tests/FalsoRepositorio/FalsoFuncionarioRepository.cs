@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using SGPH.Models;
 
@@ -7,7 +6,7 @@ namespace SGPH.Tests.FalsoRepositorio
 {
     public class FalsoFuncionarioRepository : IFuncionarioRepository
     {
-        private List<Funcionario> _funcionarios;
+        private readonly List<Funcionario> _funcionarios;
 
         public FalsoFuncionarioRepository(List<Funcionario> funcionarios)
         {

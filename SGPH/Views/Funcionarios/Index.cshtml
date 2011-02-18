@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Inserir novo", "Criar")
 </p>
-<table>
+<table class="data-table">
     <tr>
         <th></th>
         <th>
@@ -36,7 +36,6 @@
     <tr>
         <td>
             @Html.ActionLink("Editar", "Editar", new { id=funcionario.Id }) |
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=funcionario.Id }) |
             @Html.ActionLink("Excluir", "Excluir", new { id=funcionario.Id })
         </td>
         <td>

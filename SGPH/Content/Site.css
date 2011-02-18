@@ -214,26 +214,16 @@ input[type="password"]
 
 /* TABLE
 ----------------------------------------------------------*/
+table.data-table  {width:100%;border:5px solid #f9fbfc;border-top:none; font-size:.9em;}
+table.data-table td, table.data-table th {padding:6px 10px; border-top:2px solid #eff3f7;background:#e7f0f3;}
+table.data-table th { text-align:left;}
+table.data-table thead th { background:#d7e6ec;border-top:5px solid #f9fbfc;color:#000;}
+table.data-table tbody th { background:#f1f6f8; border-top-color:#f9fbfc;}
+/* action cells */
+table.data-table td.actions, table.data-table th.actions {padding:0px;width:40px;}
+table.data-table td.actions {font-family:Arial, Helvetica, sans-serif;white-space:nowrap; text-align:center;border-right:1px dashed #d7e6ec;}
+table.data-table th.actions {font-weight:normal;color:#4d8aa2;text-align:center;}
 
-table 
-{
-  border: solid 1px #e8eef4;
-  border-collapse: collapse;
-}
-
-table td 
-{
-  padding: 5px;   
-  border: solid 1px #e8eef4;
-}
-
-table th
-{
-  padding: 6px 5px;
-  text-align: left;
-  background-color: #e8eef4; 
-  border: solid 1px #e8eef4;   
-}
 
 /* MISC  
 ----------------------------------------------------------*/
@@ -343,3 +333,34 @@ div#title
 {
     width: 6em;
 }
+
+/*Filtro de Busca------------------------*/
+#filtro
+{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #E9E9E9 #CCCCCC #CCCCCC #E9E9E9;
+    background-color: #BFDFFF;
+    padding: 10px;
+    background: -moz-linear-gradient(top, #BFDFFF, #F0F8FF);
+    background: -webkit-gradient(linear, left top, left bottom, from(#BFDFFF), to(#F0F8FF));
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#BFDFFF', EndColorStr='#F0F8FF');
+}
+#filtro div
+{
+    float: left;
+    padding: 5px;
+}
+#filtro label
+{
+    display: block;
+    padding-top: 5px;
+    font-size: 0.9em;
+}
+#filtro span
+{
+    clear: both;
+    display: block;
+    padding-top: 5px;
+}
+/*--------------------------------------*/
